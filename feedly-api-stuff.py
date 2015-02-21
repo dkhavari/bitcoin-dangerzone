@@ -1,4 +1,5 @@
-import feedlyclient, requests
+from libraries import feedlyclient
+import requests
 from bs4 import BeautifulSoup
 import cfscrape
 
