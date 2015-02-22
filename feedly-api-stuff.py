@@ -20,13 +20,15 @@ def get_urls():
         content = feedly.get_feed_content(access_token = token, streamId = sub_id, unreadOnly = False, newerThan = False)
         articles = content['items'] # Finds the articles in the content dict.
         for article in articles:
+            print article
+            quit()
             list_ = article['alternate'] # Pulls the article metadata like url.
             dict_ = list_[0] # Random nesting: for whatever reason the previous line returned a list of length one containing a dict.
             url = dict_['href'] # This is where the url is stored.
             urls.append(url)
             unixy_time = article['published'] # Returns when it was published in 13-digit unix-like timestamp.
             time_and_date = datetime.datetime.fromtimestamp(int(unixy_time/1000)).strftime('%a %Y-%m-%d %H:%M:%S') #convert from their weird unix-esque 13-digit time format.
-            print time_and_date
+            #print time_and_date
     return urls        
 
 
