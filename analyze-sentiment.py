@@ -23,20 +23,11 @@ for article in articles:
 	url = article[1]
 	engagement = float(article[2])
 	text = article[3]
-	
-	# print '\n\n\n\n\n'
-	# print date
-	# print url
-	# print engagement
-	# print text
 
-	# nlp_sentiment = api.sentiment("text", text)
-	# score = nlp_sentiment['docSentiment']['score']
+	nlp_sentiment = api.sentiment("text", text)
+	score = nlp_sentiment['docSentiment']['score']
 
 	print url
-	# print score
-
-	# quit()
 
 
 

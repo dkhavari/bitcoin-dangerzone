@@ -53,5 +53,4 @@ def get_articles():
                 text = get_text(url)
                 article_info = (time_and_date, url, engagement_rate, text)
                 new_articles.append(article_info)
-        return new_articles
-
+    return new_articles
