@@ -20,15 +20,23 @@ articles = pipeline.get_articles()
 
 for article in articles:
 	date = datetime.datetime.strptime(str(article[0]), '%a %Y-%m-%d %H:%M:%S')
-	url = str(article[1])
+	url = article[1]
 	engagement = float(article[2])
-	text = str(article[3])
-
+	text = article[3]
 	
-	print date
+	# print '\n\n\n\n\n'
+	# print date
+	# print url
+	# print engagement
+	# print text
+
+	# nlp_sentiment = api.sentiment("text", text)
+	# score = nlp_sentiment['docSentiment']['score']
+
 	print url
-	print engagement
-	print text
+	# print score
+
+	# quit()
 
 
 

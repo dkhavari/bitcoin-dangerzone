@@ -1,4 +1,4 @@
-import feedlyclient
+from libraries import feedlyclient
 import requests
 from bs4 import BeautifulSoup
 import cfscrape
@@ -21,7 +21,7 @@ def get_text(url):
     return text
 
 
-def get_urls():
+def get_articles():
     client = MongoClient('ds047571.mongolab.com:47571')
     db = client.coinage
     db.authenticate('bit', 'coin')
