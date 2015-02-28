@@ -23,7 +23,15 @@ for article in articles:
 	date = datetime.datetime.strptime(str(article[0]), '%a %Y-%m-%d %H:%M:%S')
 	url = article[1]
 	engagement = float(article[2])
+
 	text = article[3]
-	score = float(api.sentiment("text", text)['docSentiment']['score'])
-	article_entry = {'date': date, 'url': url, 'engagement': engagement, 'score': score}
+	title = article[4]
+	text_score = float(api.sentiment("text", text)['docSentiment']['score'])
+	title_received = api.sentiment("text", title)
+	title_score = 0.0
+
+	if 'score' in title_received['docSentiment']:
+		title_score = float(title_received['docSentiment']['score'])
+
+	article_entry = {'date': date, 'url': url, 'engagement': engagement, 'title_score': title_score,'text_score': text_score}
 	collection.save(article_entry)
