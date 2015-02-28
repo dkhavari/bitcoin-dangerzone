@@ -41,6 +41,7 @@ def get_articles():
         content = feedly.get_feed_content(access_token = token, streamId = sub_id, unreadOnly = False, newerThan = False)
         articles = content['items'] # Finds the articles in the content dict.
         for article in articles:
+            title = article['title']
             list_ = article['alternate'] # Pulls the article metadata like url.
             if 'engagementRate' not in str(article):
                 continue
@@ -51,6 +52,6 @@ def get_articles():
                 unixy_time = article['published'] # Returns when it was published in 13-digit unix-like timestamp.
                 time_and_date = datetime.datetime.fromtimestamp(int(unixy_time/1000)).strftime('%a %Y-%m-%d %H:%M:%S') #convert from their weird unix-esque 13-digit time format.
                 text = get_text(url)
-                article_info = (time_and_date, url, engagement_rate, text)
+                article_info = (time_and_date, url, engagement_rate, text, title)
                 new_articles.append(article_info)
     return new_articles
