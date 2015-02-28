@@ -10,7 +10,7 @@ import pymongo
 def get_text(url):
     scraper = cfscrape.create_scraper() #this is necessary to bypass CloudFlare doing its job
     
-    html = scraper.get(url).content #scrapes html. take that, CloudFlare
+    html = scraper.get(url, verify=False).content #scrapes html. take that, CloudFlare
     soup = BeautifulSoup(html)
     for script in soup(["script", "style"]):  #removes all js and unnecessary links, might put back links, though.
         script.extract()
